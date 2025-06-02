@@ -12,6 +12,9 @@ class ProductRepository @Inject constructor(
     private val api: ProductApiService
 ) {
 
+    /**
+     * 取得頁面
+     */
     fun getProductPager(): Pager<String, Product> {
         return Pager(
             config = PagingConfig(pageSize = 20),

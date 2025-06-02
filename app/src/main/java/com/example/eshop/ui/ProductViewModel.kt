@@ -20,22 +20,5 @@ class ProductViewModel @Inject constructor(
     private val repository: ProductRepository
 ) : ViewModel() {
 
-//    private val _uiState = MutableStateFlow(ProductUiState())
-//    val uiState = _uiState.onStart {
-//        repository.getProductPager()
-//    }.stateIn(
-//        scope = viewModelScope,
-//        started =  SharingStarted.WhileSubscribed(5000L),
-//        initialValue = _uiState
-//    )
-
     val pager = repository.getProductPager().flow.cachedIn(viewModelScope)
 }
-
-
-data class ProductUiState(
-    val products: List<Product> = emptyList(),
-    val isLoading: Boolean = false,
-    val isRefreshing: Boolean = false,
-    val errorMessage: String? = null
-)
